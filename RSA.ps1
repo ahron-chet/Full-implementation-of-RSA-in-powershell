@@ -40,6 +40,7 @@ function pow-mod($x,$y,$z)
     return $n
 }
 
+
 function is-prime($n)
 {
 
@@ -76,6 +77,8 @@ function is-prime($n)
 
 }
 
+
+
 function power($x,$y)
 {
     $n = [bigint]1
@@ -101,6 +104,9 @@ function div2($n)
     return $e, $m
     
 }
+
+
+
 function iterat($a, $e, $m, $n)
 {
     $a=[bigint]$a
@@ -123,6 +129,9 @@ function iterat($a, $e, $m, $n)
     return $false
 
 }
+
+
+
 function miler-rabin($n)
 {
     $em = (div2 -n $n)
@@ -140,6 +149,8 @@ function miler-rabin($n)
     return $true
 }
 
+
+
 function random-bit($nbi)
 {
     $min = [bigint]$nbi -1
@@ -147,6 +158,8 @@ function random-bit($nbi)
     $r=Get-Random -Minimum ((power -x 2 -y $min)+1) -Maximum ((power -x 2 -y $max)-1)
     return [bigint]$r+1
 }
+
+
 
 function get-prime2($nbit)
 {
@@ -190,6 +203,8 @@ function round-int($decimel)
     return [bigint]$res
 }
 
+
+
 class Euclids
 {
     [bigint]gcd ($a,$b)
@@ -228,6 +243,7 @@ class Euclids
    }
 }
 
+
 function intToByetes($n,$len)
 {
     function div-b($nb)
@@ -259,6 +275,7 @@ function intToByetes($n,$len)
 
 }
 
+
 function len-arr($r)
 {
     $c=0
@@ -268,6 +285,9 @@ function len-arr($r)
     }
     return [bigint]$c
 }
+
+
+
 function bytes-toInt($bytesarray)
 {
     $c = len-arr($bytesarray)
@@ -283,6 +303,8 @@ function bytes-toInt($bytesarray)
     }
     return [bigint]$n
 }
+
+
 
 function str-toBytes($data)
 {
@@ -301,6 +323,8 @@ function bit-length($n)
     }
     return $c
 }
+
+
 
 class RSA
 {
