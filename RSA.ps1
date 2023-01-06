@@ -304,21 +304,20 @@ class RSA
         $dec = pow-mod -x $m -y $d -z $n
         return $dec
     }
-    [string]encryptData($public,$data)
+    [array]encryptData($public,$data)
     {
         $con = [BitConvert]::new()
         $m = $con.bytesToInt($data)
         $enc = [RSA]::new().encrypt($public,$m)
         $bitlen = $con.getBitLen($enc)
         $enc = $con.intToByete($enc,$bitlen)
-        return [System.Convert]::ToBase64String($enc) 
+        return $enc 
     }
-    [string]decryptData($public,$data)
+    [array]decryptData($private,$data)
     {
         $con = [BitConvert]::new()
-        $m = [System.Convert]::FromBase64String($data)
-        $m = $con.bytesToInt($m)
-        $dec = [RSA]::new().decrypt($public,$m)
+        $m = $con.bytesToInt($data)
+        $dec = [RSA]::new().decrypt($private,$m)
         $bitlen = $con.getBitLen($dec)
         $dec = $con.intToByete($dec,$bitlen)
         return $dec
@@ -353,6 +352,14 @@ class RSA
     }
 
 }
+$rsa = [RSA]::new()
+$keys = $rsa.genPrivateKey(128)
+$message = [System.Text.Encoding]::ASCII.GetBytes("Hello")
+$enc = $rsa.encryptData(($keys[0]),$message)
+$ciphertext = [System.Text.Encoding]::ASCII.GetString($enc)
+echo "Encrypted text = $ciphertext"
+$dec = [System.Text.Encoding]::ASCII.GetString(($rsa.decryptData(($keys[1]),$enc)))
+echo "Decrypted text = $dec"
 
 
 
