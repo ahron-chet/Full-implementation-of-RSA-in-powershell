@@ -353,7 +353,7 @@ class RSA
 
 }
 $rsa = [RSA]::new()
-$keys = $rsa.genPrivateKey(128)
+$keys = $rsa.genPrivateKey(64)
 $message = [System.Text.Encoding]::ASCII.GetBytes("Hello")
 $enc = $rsa.encryptData(($keys[0]),$message)
 $ciphertext = [System.Text.Encoding]::ASCII.GetString($enc)
